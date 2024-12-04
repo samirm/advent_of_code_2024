@@ -23,27 +23,20 @@ int main(int argc, char* argv[])
     vector<int> leftList;
     vector<int> rightList;
     while (getline(input, line)) {
-
         auto numbers = split(line, ' ');
         leftList.push_back(stoi(numbers.front()));
         rightList.push_back(stoi(numbers.back()));
     }
-    sort(leftList.begin(), leftList.end());
-    sort(rightList.begin(), rightList.end());
+    ranges::sort(leftList);
+    ranges::sort(rightList);
 
     vector<int> diffs(leftList.size());
     for (auto i = 0; i < leftList.size(); i++) {
         diffs[i] = abs(leftList[i] - rightList[i]);
     }
 
-    cout << abs(leftList[0] - rightList[0]) << endl;
-    printVector(diffs);
-    cout << "left" << endl;
-    printVector(leftList);
-    cout << "right" << endl;
-    printVector(rightList);
-    auto sum = accumulate(diffs.begin(), diffs.end(), 0);
-    cout << "sum" << endl;
+    const auto sum = reduce(diffs.begin(), diffs.end());
+    cout << "total distance: ";
     cout << sum << endl;
 
     input.close();

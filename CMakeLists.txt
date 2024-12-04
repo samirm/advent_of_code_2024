@@ -11,5 +11,5 @@ include_directories("day 1")
 
 add_executable(advent_of_code_2024
     "day 1/locations.cpp"
-        util/myUtil.cpp
+        util/util.cpp
 )
