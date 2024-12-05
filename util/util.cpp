@@ -2,7 +2,9 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include "myUtil.h"
+#include "util.h"
+
+#include <map>
 
 template <typename Out>
 
@@ -23,5 +25,11 @@ std::vector<std::string> split(const std::string &s, const char delim) {
 void printVector(const std::vector<int>& v) {
     for (auto i : v) {
         std::cout << i << std::endl;
+    }
+}
+
+void printMap(const std::map<int, int>& m) {
+    for (const auto& [key, value] : m) {
+        std::cout << key << ": " << value << std::endl;
     }
 }

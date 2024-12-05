@@ -2,11 +2,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../util/myUtil.h"
+#include "../util/util.h"
 #include <iterator>
 #include <algorithm>
 #include <numeric>
 #include <cmath>
+#include <map>
 
 using namespace std;
 
@@ -35,11 +36,30 @@ int main(int argc, char* argv[])
         diffs[i] = abs(leftList[i] - rightList[i]);
     }
 
-    const auto sum = reduce(diffs.begin(), diffs.end());
+    auto sum = reduce(diffs.begin(), diffs.end());
     cout << "total distance: ";
+    cout << sum << endl;
+
+    map<int, int> histogram;
+    for (int i : leftList) {
+        int count = 0;
+        for (int j : rightList) {
+            if (i == j) count++;
+        }
+        histogram[i] = count;
+    }
+
+    sum = 0;
+    auto it = histogram.begin();
+    for (int i = 0; i < leftList.size(); i++) {
+        sum += it->first*it->second;
+        if (leftList[i+1] == leftList[i]) continue;
+        ++it;
+    }
+
+    cout << "similarity score: ";
     cout << sum << endl;
 
     input.close();
     return 0;
 }
-
