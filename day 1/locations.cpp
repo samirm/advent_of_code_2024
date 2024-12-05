@@ -13,7 +13,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    ifstream input("data/input.txt");
+    ifstream input("day 1/data/input.txt");
     
     if (!input.is_open()) {
         cerr << "Error opening file" << endl;

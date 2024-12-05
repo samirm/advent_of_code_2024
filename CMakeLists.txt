@@ -7,9 +7,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include_directories(.)
 include_directories(util)
-include_directories("day 1")
+include_directories("day 2")
 
 add_executable(advent_of_code_2024
-    "day 1/locations.cpp"
         util/util.cpp
+        "day 2/reactor.cpp"
 )
